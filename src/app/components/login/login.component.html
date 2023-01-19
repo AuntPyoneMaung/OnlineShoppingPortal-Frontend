@@ -1,0 +1,51 @@
+<div class="account-content">
+  <div class="container">
+    <div>
+      <div class="account-wrapper">
+        <h3 class="account-title">Login</h3>
+        <p class="account-subtitle">Online Shopping Portal</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="login100-form validate-form">
+          <div class="card-body auth-card">
+            <div class="col-md-12 col-sm-12 col-12">
+
+              <div class="form-group">
+                <label for="user">Username : </label>
+                <input formControlName="username" name="user" class="form-control" type="text" placeholder="Username"
+                  autocomplete="new-username" />
+                <div *ngIf="
+              loginForm.controls['username'].dirty &&
+              loginForm.hasError('required', 'username')
+              " class="k-tooltip-validation">Required!</div>
+              </div>
+
+              <div class="form-group">
+                <label for="pw">Password : <span (click)="hideShowPassword()" class="fa {{ eyeIcon }}"></span></label>
+
+                <input formControlName="password" name="pw" placeholder="password" class="form-control" [type]="type"
+                  autocomplete="new-password" />
+                <div *ngIf="
+              loginForm.controls['password'].dirty &&
+              loginForm.hasError('required', 'password')
+              " class="k-tooltip-validation">Required!
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-6 col-12">
+              <button type="submit" class="btn btn-primary account-btn">Login</button>
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+              <div class="text-center pt-4">
+                Don't have an account?
+                <a id="forget" routerLink="/signup"> Sign Up</a>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
