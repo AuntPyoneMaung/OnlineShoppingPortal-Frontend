@@ -6,6 +6,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/service/auth.service';
 import ValidateForm from 'src/app/helpers/validateform';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private userStore: UserService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,9 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           this.loginForm.reset();
           this.auth.storeToken(res.token);
+          const payload = this.auth.decodedToken();
+          this.userStore.setFullName(payload.name);
+          this.userStore.setRoleForStore(payload.role);
           alert(res.message);
           this.router.navigate(['/dashboard']);
         },

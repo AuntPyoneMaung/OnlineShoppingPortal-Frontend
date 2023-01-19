@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+// service to get and store user data from the data stream (observable)
 @Injectable({
   providedIn: 'root',
 })

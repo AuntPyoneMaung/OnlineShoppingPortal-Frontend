@@ -38,8 +38,7 @@
                         <td>{{ category.segmentId }}</td>
                         <td>{{ category.categoryName }}</td>
                         <td>
-                            <a href="#" [routerLink]="['components/ViewCategory/',
-                                category.CategoryId]" class="btn"><i class="fas fa-eye view"></i></a>
+                            <a href="#" [routerLink]="['/products']" class="btn"><i class="fas fa-eye view"></i></a>
                             <a href="#" [routerLink]="['components/EditCategory/',
                                 category.CategoryId]" class="btn"><i class="fa fa-edit edit"></i></a>
                             <button type="button" (click)="deleteCategoryConfirmation(category)" class="btn">
@@ -51,6 +50,13 @@
                         <td *ngIf="categoryList.length == 0" colspan="6">null</td>
                     </tr>
                 </tbody>
+
+
+
+
+
+
+
             </table>
         </div>
     </div>

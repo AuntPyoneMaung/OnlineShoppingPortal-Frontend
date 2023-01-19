@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,12 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     // ViewEmployeeComponent,
     // AddEmployeeComponent,
     // EditEmployeeComponent,
-    // CartComponent,
-    // ProductsComponent,
+    CartComponent,
+    ProductsComponent,
     LoginComponent,
     SignupComponent,
     DashboardComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
