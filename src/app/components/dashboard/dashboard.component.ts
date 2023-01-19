@@ -101,21 +101,21 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  deleteCategoryConfirmation(employee: any) {
+  deleteCategoryConfirmation(category: any) {
     this.modalService
       .open(MODALS['deleteModal'], {
         ariaLabelledBy: 'modal-basic-title',
       })
       .result.then(
         (result) => {
-          this.deleteCategory(employee);
+          this.deleteCategory(category);
         },
         (reason) => {}
       );
   }
 
-  deleteCategory(employee: any) {
-    this.httpProvider.deleteCategoryById(employee.id).subscribe(
+  deleteCategory(category: any) {
+    this.httpProvider.deleteCategoryById(category.id).subscribe(
       (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
