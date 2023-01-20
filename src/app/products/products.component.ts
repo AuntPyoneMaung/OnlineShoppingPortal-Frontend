@@ -10,7 +10,7 @@ import { WebApiService } from '../service/web-api.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  public productList: any;
+  productList: any = [];
   public filterBrand: any;
   searchKey: string = '';
   constructor(
@@ -25,11 +25,10 @@ export class ProductsComponent implements OnInit {
   }
 
   async getAllProducts() {
-    this.api.getProducts().subscribe({
+    this.api.getAllProducts().subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
-          console.log(resultData);
           if (resultData) {
             this.productList = resultData;
           }

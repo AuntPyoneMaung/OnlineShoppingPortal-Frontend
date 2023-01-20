@@ -10,7 +10,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class WebApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getProducts(): Observable<any> {
+  getAllProducts(): Observable<any> {
     return this.httpClient.get<any>('https://localhost:7201/api/products').pipe(
       map((res: any) => {
         return res;

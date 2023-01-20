@@ -1,78 +1,69 @@
-<div class="card-top container-fluid">
-    <div class="container d-flex">
-        <div class="item">
-            <a (click)="filter('')">
-                <!-- <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt=""> -->
-                <h6>All products</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a (click)="filter('sheba')">
-                <!-- <img src=""
-                    alt="" /> -->
-                <h6>Sheba</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a (click)="filter('neselle')">
-                <!-- <img
-          src=""
-          alt=""
-        /> -->
-                <h6>Neselle</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a (click)="filter('fair')">
-                <!-- <img
-          style="width: 62px; margin-top: 5px"
-          src="https://tinyurl.com/123qwdasd"
-          alt=""
-        /> -->
-                <h6>Fair</h6>
-            </a>
-        </div>
-    </div>
-</div>
+<!--  -->
+<div class="container-xl">
+    <!-- <button (click)="signout()" class="btn btn-primary account-btn">Sign out</button> -->
+    <div class="table-responsive">
 
-<div class="container">
-    <div class="row">
+        <div class="table-wrapper">
 
-        <ng-container *ngFor="let item of filterBrand | filter : searchKey : 'title'">
-            <div class="card col-md-3">
-                <img src="{{ item.image }}" alt="" />
-                <h5 style="
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100ch;
-          ">
-                    {{ item.productName }}
-                </h5>
-                <p style="
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100ch;
-          ">
-                    {{ item.ProductDescription }}
-                </p>
-                <p><strong>Price:</strong> ${{ item.price }}</p>
-                <button class="btn btn-primary" (click)="addtocart(item)">
-                    Add to cart
-                </button>
+            <div class="table-title">
+                <div class="row">
+
+                    <!-- <div class="col-sm-6">
+                        <h4>Hello, {{fullName}}</h4>
+                    </div> -->
+                    <div>
+                        <nav class="navbar navbar-light bg-light
+                            justify-content-between">
+                            <a class="navbar-brand">Online Shopping Portal</a>
+                            <form class="form-inline">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success my-2
+                                    my-sm-0" type="submit">Search</button>
+
+                                <button routerLink="/cart" class="btn btn-primary">Cart</button>
+                            </form>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </ng-container>
+            <table class="table table-striped table-hover table-bordered
+                table-content">
+                <thead>
+                    <tr class="center-align">
+                        <th>Product Name</th>
+                        <th>Product Description</th>
+                        <th>Product Model</th>
+                        <th>Product Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of productList" class="center-align">
+                        <td>{{ category.productName }}</td>
+                        <td>{{ category.productDescription }}</td>
+                        <td>{{ category.productModel }}</td>
+                        <td>{{ category.productPrice }}</td>
+
+                </tbody>
+
+
+
+
+
+
+
+            </table>
+        </div>
     </div>
 </div>
+<!-- <h1>HEllo PRoducts ss</h1> -->
 
-<h1>HEllo PRoducts ss</h1>
-
-<tbody>
-    <a>Hellooooo</a>
-    <tr *ngFor="let i of productList" class="center-align">
-        <td>{{ i.productName }}</td>
-        <td>test {{ i.productModel }}</td>
+<!-- <tbody>
+    <a>List of items</a>
+    <tr *ngFor="let item of productList">
+        <td>{{ item.productName }}</td>
+        <td>{{ item.productDescription }}</td>
 
     </tr>
-</tbody>
+</tbody> -->

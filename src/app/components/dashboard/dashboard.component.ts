@@ -71,12 +71,10 @@ export class DashboardComponent implements OnInit {
     this.getAllCategory();
 
     // observable so can subscribe
-    this.userStore.getFullName().subscribe(
-      (value) => {
-        let fullNameFromToken = this.auth.getNameFromToken();
-        this.fullName = value || fullNameFromToken; // in case of refresh page, get from token as observable is emptied
-      },
-    );
+    this.userStore.getFullName().subscribe((value) => {
+      let fullNameFromToken = this.auth.getNameFromToken();
+      this.fullName = value || fullNameFromToken; // in case of refresh page, get from token as observable is emptied
+    });
   }
 
   async getAllCategory() {

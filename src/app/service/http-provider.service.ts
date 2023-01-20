@@ -11,10 +11,10 @@ var apiUrl = 'https://localhost:7201';
 
 var httpLink = {
   getAllCategory: apiUrl + '/api/categories/getAllCategory',
-  deleteEmployeeById: apiUrl + '/api/categories/deleteEmployeeById',
+  deleteCategoryById: apiUrl + '/api/categories/deleteEmployeeById',
   getEmployeeDetailById: apiUrl + '/api/categories/getEmployeeDetailById',
   saveEmployee: apiUrl + '/api/categories/saveEmployee',
-  getProducts: apiUrl + 'api/Products',
+  getAllProducts: apiUrl + 'api/products/getAllProducts',
 };
 
 @Injectable({
@@ -27,17 +27,13 @@ export class HttpProviderService {
     return this.webApiService.get(httpLink.getAllCategory);
   }
 
-  // public getProducts(): Observable<any> {
-  //   return this.webApiService.get<any>('https://localhost:7201/api/products').pipe(
-  //     map((res: any) => {
-  //       return res;
-  //     })
-  //   );
-  // }
+  public getAllProducts(): Observable<any> {
+    return this.webApiService.get(httpLink.getAllProducts);
+  }
 
   public deleteCategoryById(model: any): Observable<any> {
     return this.webApiService.post(
-      httpLink.deleteEmployeeById + '?employeeId=' + model,
+      httpLink.deleteCategoryById + '?employeeId=' + model,
       ''
     );
   }
