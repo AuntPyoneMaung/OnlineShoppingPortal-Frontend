@@ -19,6 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { FilterPipe } from './shared/filter.pipe';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FilterPipe } from './shared/filter.pipe';
     SignupComponent,
     DashboardComponent,
     FilterPipe,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

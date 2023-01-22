@@ -56,9 +56,11 @@ const MODALS: { [name: string]: Type<any> } = {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  public users: any = [];
+  users: any = [];
   categoryList: any = [];
+  // users: any = []:
   public fullName: string = '';
+  public role: string = '';
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -75,15 +77,20 @@ export class DashboardComponent implements OnInit {
       let fullNameFromToken = this.auth.getNameFromToken();
       this.fullName = value || fullNameFromToken; // in case of refresh page, get from token as observable is emptied
     });
+
+    this.userStore.getRole().subscribe((value) => {
+      let roleFromToken = this.auth.getRoleFromToken();
+      this.role = value || roleFromToken;
+    });
   }
 
   async getAllCategory() {
-    this.httpProvider.getAllCategory().subscribe({
+    this.httpProvider.getUsers().subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData) {
-            this.categoryList = resultData;
+            this.users = resultData;
           }
         }
       },
@@ -91,7 +98,7 @@ export class DashboardComponent implements OnInit {
         if (error) {
           if (error.status == 404) {
             if (error.error && error.error.message) {
-              this.categoryList = [];
+              this.users = [];
             }
           }
         }

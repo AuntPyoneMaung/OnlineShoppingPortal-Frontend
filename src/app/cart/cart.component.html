@@ -7,7 +7,6 @@
                         <tr>
                             <th>Sr.No</th>
                             <th>Product Name</th>
-                            <th>Product Image</th>
                             <th>Description</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -18,10 +17,9 @@
                     <tbody>
                         <tr *ngFor="let item of products; let i = index">
                             <td>{{i+1}}</td>
-                            <td>{{item.ProductName}}</td>
-                            <!-- <td><img style="width: 120px;" src="{{item.image}}" alt=""></td> -->
-                            <td style="width: 25%;">{{item.ProductDescription}}</td>
-                            <th style="width: 12%;">{{item.ProductModel}}</th>
+                            <td>{{item.productName}}</td>
+                            <th style="width: 25%;">{{item.productDescription}}</th>
+                            <th style="width: 12%;">{{item.productPrice}}</th>
                             <td style="width: 12%;">{{item.quantity}}</td>
                             <td style="width: 12%;">{{item.total}}</td>
                             <td>

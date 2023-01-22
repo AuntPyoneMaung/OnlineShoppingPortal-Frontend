@@ -1,16 +1,9 @@
-<!--  -->
+<!-- 
 <div class="container-xl">
-    <!-- <button (click)="signout()" class="btn btn-primary account-btn">Sign out</button> -->
     <div class="table-responsive">
-
         <div class="table-wrapper">
-
             <div class="table-title">
                 <div class="row">
-
-                    <!-- <div class="col-sm-6">
-                        <h4>Hello, {{fullName}}</h4>
-                    </div> -->
                     <div>
                         <nav class="navbar navbar-light bg-light
                             justify-content-between">
@@ -44,26 +37,76 @@
                         <td>{{ category.productDescription }}</td>
                         <td>{{ category.productModel }}</td>
                         <td>{{ category.productPrice }}</td>
-
                 </tbody>
-
-
-
-
-
-
-
             </table>
         </div>
     </div>
+</div> -->
+<app-header></app-header>
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a (click)="filter('')">
+                <!-- <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt=""> -->
+                <h6>All products</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('Leek')">
+                <!-- <img src=""
+                    alt="" /> -->
+                <h6>Leek</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('Honey Dew')">
+                <!-- <img
+          src=""
+          alt=""
+        /> -->
+                <h6>Honey Dew</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('Pepsi')">
+                <!-- <img
+          style="width: 62px; margin-top: 5px"
+          src="https://tinyurl.com/123qwdasd"
+          alt=""
+        /> -->
+                <h6>Pepsi</h6>
+            </a>
+        </div>
+    </div>
 </div>
-<!-- <h1>HEllo PRoducts ss</h1> -->
 
-<!-- <tbody>
-    <a>List of items</a>
-    <tr *ngFor="let item of productList">
-        <td>{{ item.productName }}</td>
-        <td>{{ item.productDescription }}</td>
+<div class="container">
+    <div class="row">
 
-    </tr>
-</tbody> -->
+        <ng-container *ngFor="let item of filterBrand | filter : searchKey : 'title'">
+            <div class="card col-md-3">
+                <!-- <img src="{{ item.image }}" alt="" /> -->
+                <h5 style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+                    {{ item.productName }}
+                </h5>
+                <p style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+                    {{ item.productDescription }}
+                </p>
+                <p><strong>Price:</strong> $Rs. {{ item.productPrice }}</p>
+                <button class="btn btn-primary" (click)="addtocart(item)">
+                    Add to cart
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</div>

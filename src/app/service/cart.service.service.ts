@@ -10,7 +10,7 @@ export class CartService {
   public search = new BehaviorSubject<string>('');
 
   constructor() {}
-  getProducts() {
+  getAllProducts() {
     return this.productList.asObservable();
   }
 

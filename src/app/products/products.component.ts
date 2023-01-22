@@ -10,7 +10,8 @@ import { WebApiService } from '../service/web-api.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  productList: any = [];
+  public productList: any = [];
+  public filterCategory: any;
   public filterBrand: any;
   searchKey: string = '';
   constructor(
@@ -25,13 +26,17 @@ export class ProductsComponent implements OnInit {
   }
 
   async getAllProducts() {
-    this.api.getAllProducts().subscribe({
-      next: (data: any) => {
+    this.httpProvider.getAllProducts().subscribe({
+      next: (data) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData) {
             this.productList = resultData;
+            this.filterCategory = resultData;
           }
+          this.productList.forEach((a: any) => {
+            Object.assign(a, { quantity: 1, total: a.price });
+          });
         }
       },
       error: (error: any) => {
@@ -53,9 +58,12 @@ export class ProductsComponent implements OnInit {
   addtocart(item: any) {
     this.cartService.addtoCart(item);
   }
+
+  // does not function properly as M-M model does not work due to circular reference
+  // currently set to filter by exact name
   filter(brand: string) {
     this.filterBrand = this.productList.filter((a: any) => {
-      if (a.brand == brand || brand == '') {
+      if (a.productName == brand || brand == '') {
         return a;
       }
     });
