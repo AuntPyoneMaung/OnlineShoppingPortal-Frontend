@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 // import { EditEmployeeComponent } from './edit-category/edit-employee.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CartComponent } from './cart/cart.component';
@@ -44,7 +44,7 @@ import { AddCategoryComponent } from './components/dashboard/add-category/add-ca
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
+    // NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],
