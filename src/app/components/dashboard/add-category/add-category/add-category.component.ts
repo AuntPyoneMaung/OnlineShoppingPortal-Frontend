@@ -9,20 +9,19 @@ import { HttpProviderService } from 'src/app/service/http-provider.service';
 export class AddCategoryComponent implements OnInit {
   constructor(private service: HttpProviderService) {}
 
-  @Input() cat: any;
-  CategoryId = '';
   CategoryName = '';
-  ngOnInit(): void {
-    this.CategoryId = this.cat.CategoryId;
-    this.CategoryName = this.cat.CategoryName;
-  }
+  SegmentId = '';
+
+  ngOnInit(): void {}
 
   addtheCategory() {
-    var dept = {
-      CategoryId: this.CategoryId,
+    const cat = {
       CategoryName: this.CategoryName,
+      SegmentId: this.SegmentId,
     };
-    this.service.addCategory(dept).subscribe((res) => {
+
+    this.service.addCategory(cat).subscribe((res) => {
+      console.log(res);
       alert(res.toString());
     });
   }
