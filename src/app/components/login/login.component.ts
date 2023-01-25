@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   fieldTextType: boolean = false;
   loginForm!: FormGroup;
   isLoading: boolean = false;
+  role: string = '';
 
   // inject the Auth service private auth authservice
   constructor(
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFormGroup();
+    this.userStore.getRole().subscribe((value) => {
+      let roleFromToken = this.auth.getRoleFromToken();
+      this.role = value || roleFromToken;
+    });
   }
 
   createFormGroup(): void {
@@ -59,7 +64,11 @@ export class LoginComponent implements OnInit {
           this.userStore.setFullName(tokenPayload.name);
           this.userStore.setRoleForStore(tokenPayload.role);
           alert(res.message);
-          this.router.navigate(['/dashboard']);
+          if (this.role === 'admin') {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/products']);
+          }
         },
         error: (err) => {
           alert(err.error.message);

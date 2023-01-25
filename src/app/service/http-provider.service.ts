@@ -16,6 +16,7 @@ var httpLink = {
   saveEmployee: apiUrl + '/api/categories/saveEmployee',
   getAllProducts: apiUrl + '/api/products',
   getUsers: apiUrl + '/api/User/getAllUsers',
+  addCategory: apiUrl + '/api/categories',
 };
 
 @Injectable({
@@ -34,6 +35,10 @@ export class HttpProviderService {
 
   public getAllProducts(): Observable<any> {
     return this.webApiService.get(httpLink.getAllProducts);
+  }
+
+  public addCategory(cateogry: any): Observable<any> {
+    return this.webApiService.post(httpLink.addCategory, cateogry);
   }
 
   public deleteCategoryById(model: any): Observable<any> {

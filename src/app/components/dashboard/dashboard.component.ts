@@ -61,6 +61,9 @@ export class DashboardComponent implements OnInit {
   // users: any = []:
   public fullName: string = '';
   public role: string = '';
+  public ModalTitle: string = '';
+  public ActivateAddCatComp: boolean = false;
+  cat: any;
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -85,12 +88,12 @@ export class DashboardComponent implements OnInit {
   }
 
   async getAllCategory() {
-    this.httpProvider.getUsers().subscribe({
+    this.httpProvider.getAllCategory().subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData) {
-            this.users = resultData;
+            this.categoryList = resultData;
           }
         }
       },
@@ -106,18 +109,30 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  deleteCategoryConfirmation(category: any) {
-    this.modalService
-      .open(MODALS['deleteModal'], {
-        ariaLabelledBy: 'modal-basic-title',
-      })
-      .result.then(
-        (result) => {
-          this.deleteCategory(category);
-        },
-        (reason) => {}
-      );
+  addClick() {
+    this.cat = {
+      CategoryId: '0',
+      CategoryName: '',
+    };
+    this.ModalTitle = 'Add Category';
+    this.ActivateAddCatComp = true;
   }
+  closeClick() {
+    this.ActivateAddCatComp = false;
+  }
+
+  // deleteCategoryConfirmation(category: any) {
+  //   this.modalService
+  //     .open(MODALS['deleteModal'], {
+  //       ariaLabelledBy: 'modal-basic-title',
+  //     })
+  //     .result.then(
+  //       (result) => {
+  //         this.deleteCategory(category);
+  //       },
+  //       (reason) => {}
+  //     );
+  // }
 
   deleteCategory(category: any) {
     this.httpProvider.deleteCategoryById(category.id).subscribe(

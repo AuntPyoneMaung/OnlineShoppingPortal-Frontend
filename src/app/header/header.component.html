@@ -1,20 +1,45 @@
-<header>
-    <div class=" navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <!-- <div class="navbar-brand align-item-center d-flex"> -->
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"> Online <h5>Shopping Portal</h5></a>
+    <!-- <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <!-- <div class="col-sm-8"> -->
+    <input class="form-control form-control-dark w-100 rounded-1 border-0" type="text" [(ngModel)]="searchTerm"
+        (keyup)="search($event)" placeholder="Search" aria-current="page" />
+    <!-- </div> -->
+    <a class="navbar-brand col-md-1.5 col-lg-1.1 me-0 px-3 fs-6" href="#"> Hello, <p>{{fullName}}</p></a>
 
+
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <ng-container *ngIf="loggedIn === true; else elseNot">
+                <a class="nav-link px-3 cursor-pointer" (click)="signout()"><u>Sign out</u></a>
+            </ng-container>
+            <ng-template #elseNot>
+                <a href="/login">Login</a>
+            </ng-template>
+
+            <!-- <button type="button" (click)="signout()" class="btn btn-sm btn-outline-danger px-3">
+                Sign Out
+            </button> -->
+        </div>
+    </div>
+
+    <button routerLink="/cart" class="btn btn-dark">
+        <i style="font-size: 20px;" class="fa fa-shopping-cart"></i>
+        <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+    </button>
+
+</header>
+
+<!-- <header>
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-2 fs-6" href="/dashboard">Online Shopping Portal</a>
-        <!-- <div class="form-group"> -->
         <input type="text" class="form-control form-control-dark w-100 rounded-1 border-0" [(ngModel)]="searchTerm"
             (keyup)="search($event)" placeholder="search products">
 
-        <!-- </div> -->
-        <!-- <span class="fa fa-search search-icon"></span> -->
-
-
-        <!-- </div> -->
         <button routerLink="/cart" class="btn btn-dark">
             <i style="font-size: 25px;" class="fa fa-shopping-cart"></i>
             <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
         </button>
     </div>
-</header>
+</header> -->

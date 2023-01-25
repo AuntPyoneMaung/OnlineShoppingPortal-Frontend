@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { FilterPipe } from './shared/filter.pipe';
 import { HeaderComponent } from './header/header.component';
+import { AddCategoryComponent } from './components/dashboard/add-category/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
     DashboardComponent,
     FilterPipe,
     HeaderComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
   // does not function properly as M-M model does not work due to circular reference
   // currently set to filter by exact name
   filter(brand: string) {
-    this.filterBrand = this.productList.filter((a: any) => {
+    this.filterCategory = this.productList.filter((a: any) => {
       if (a.productName == brand || brand == '') {
         return a;
       }
