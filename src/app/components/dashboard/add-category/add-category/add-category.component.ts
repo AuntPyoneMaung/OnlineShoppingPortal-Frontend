@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ModalContext } from 'src/app/modal/modal-context';
+import { ModalContainerComponent } from 'src/app/modal/modal-container/modal-container.component';
 import { HttpProviderService } from 'src/app/service/http-provider.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class AddCategoryComponent implements OnInit {
   CategoryName = '';
   SegmentId = '';
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   addtheCategory() {
     const cat = {

@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { HomeComponent } from './home/home.component';
-// import { ViewEmployeeComponent } from './components/view-category/view-employee.component';
-// import { AddEmployeeComponent } from './add-category/add-employee.component';
-// import { EditEmployeeComponent } from './edit-category/edit-employee.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,14 +17,11 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { FilterPipe } from './shared/filter.pipe';
 import { HeaderComponent } from './header/header.component';
 import { AddCategoryComponent } from './components/dashboard/add-category/add-category/add-category.component';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // HomeComponent,
-    // ViewEmployeeComponent,
-    // AddEmployeeComponent,
-    // EditEmployeeComponent,
     CartComponent,
     ProductsComponent,
     LoginComponent,
@@ -44,6 +37,7 @@ import { AddCategoryComponent } from './components/dashboard/add-category/add-ca
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    ModalModule,
     // NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,

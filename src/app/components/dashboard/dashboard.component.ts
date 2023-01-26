@@ -1,9 +1,11 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { WebApiService } from 'src/app/service/web-api.service';
 import { HttpProviderService } from 'src/app/service/http-provider.service';
 // import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/service/user.service';
+import { ModalService } from 'src/app/modal/modal.service';
+import { AddCategoryComponent } from 'src/app/components/dashboard/add-category/add-category/add-category.component';
 
 // @Component({
 //   selector: 'ng-modal-confirm',
@@ -62,14 +64,15 @@ export class DashboardComponent implements OnInit {
   public fullName: string = '';
   public role: string = '';
   public ModalTitle: string = '';
-  public ActivateAddCatComp: boolean = false;
+  ActivateAddCatComp: boolean = false;
   cat: any;
 
   constructor(
     private httpProvider: HttpProviderService,
     private auth: AuthService,
     // private modalService: NgbModal,
-    private userStore: UserService
+    private userStore: UserService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -109,13 +112,13 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  addClick() {
-    this.cat = {
-      CategoryId: '0',
-      CategoryName: '',
-    };
-    this.ModalTitle = 'Add Category';
-    this.ActivateAddCatComp = true;
+  async addClick() {
+    // this.cat = {
+    //   CategoryName: '',
+    // };
+    // this.ModalTitle = 'Add Category';
+    // this.ActivateAddCatComp = true;
+    console.log(await this.modalService.open(AddCategoryComponent));
   }
   closeClick() {
     this.ActivateAddCatComp = false;

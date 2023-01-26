@@ -14,7 +14,6 @@ import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
-  // { path: 'Home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
@@ -29,9 +28,6 @@ const routes: Routes = [
   },
   { path: 'products', component: ProductsComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
-  // { path: 'ViewEmployee/:employeeId', component: ViewEmployeeComponent },
-  // { path: 'AddEmployee', component: AddEmployeeComponent },
-  // { path: 'EditEmployee/:employeeId', component: EditEmployeeComponent }
 ];
 
 @NgModule({
