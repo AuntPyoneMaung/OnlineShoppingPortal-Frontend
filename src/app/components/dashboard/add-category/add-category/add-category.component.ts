@@ -25,6 +25,7 @@ export class AddCategoryComponent implements OnInit {
     this.service.addCategory(cat).subscribe((res) => {
       console.log(res);
       alert(res.toString());
+      window.location.reload();
     });
   }
 }

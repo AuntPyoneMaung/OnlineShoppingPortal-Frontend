@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCategoryComponent } from './components/dashboard/add-category/add-category/add-category.component';
-// import { EditEmployeeComponent } from './edit-category/edit-employee.component';
-// import { ViewEmployeeComponent } from './view-category/view-employee.component';
+import { AddBrandComponent } from './components/dashboard/add-brand/add-brand.component';
+import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
 import { SignupComponent } from './components/signup/signup.component';
 // import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,6 +24,16 @@ const routes: Routes = [
   {
     path: 'add-category',
     component: AddCategoryComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-brand',
+    component: AddBrandComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-product',
+    component: AddProductComponent,
     canActivate: [AuthGuard],
   },
   { path: 'products', component: ProductsComponent },

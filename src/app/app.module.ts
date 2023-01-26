@@ -18,6 +18,8 @@ import { FilterPipe } from './shared/filter.pipe';
 import { HeaderComponent } from './header/header.component';
 import { AddCategoryComponent } from './components/dashboard/add-category/add-category/add-category.component';
 import { ModalModule } from './modal/modal.module';
+import { AddBrandComponent } from './components/dashboard/add-brand/add-brand.component';
+import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ModalModule } from './modal/modal.module';
     FilterPipe,
     HeaderComponent,
     AddCategoryComponent,
+    AddBrandComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

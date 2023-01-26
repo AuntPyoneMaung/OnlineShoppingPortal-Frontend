@@ -7,65 +7,22 @@ import { UserService } from 'src/app/service/user.service';
 import { ModalService } from 'src/app/modal/modal.service';
 import { AddCategoryComponent } from 'src/app/components/dashboard/add-category/add-category/add-category.component';
 
-// @Component({
-//   selector: 'ng-modal-confirm',
-//   template: `
-//     <div class="modal-header">
-//       <h5 class="modal-title" id="modal-title">Delete Confirmation</h5>
-//       <button
-//         type="button"
-//         class="btn close"
-//         aria-label="Close button"
-//         aria-describedby="modal-title"
-//         (click)="modal.dismiss('Cross click')"
-//       >
-//         <span aria-hidden="true">&times;</span>
-//       </button>
-//     </div>
-//     <div class="modal-body">
-//       <p>Are you sure you want to delete?</p>
-//     </div>
-//     <div class="modal-footer">
-//       <button
-//         type="button"
-//         class="btn btn-outline-secondary"
-//         (click)="modal.dismiss('cancel click')"
-//       >
-//         CANCEL
-//       </button>
-//       <button
-//         type="button"
-//         ngbAutofocus
-//         class="btn btn-success"
-//         (click)="modal.close('Ok click')"
-//       >
-//         OK
-//       </button>
-//     </div>
-//   `,
-// })
-// export class NgModalConfirm {
-//   constructor(public modal: NgbActiveModal) {}
-// }
-
-// const MODALS: { [name: string]: Type<any> } = {
-//   deleteModal: NgModalConfirm,
-// };
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-add-brand',
+  templateUrl: './add-brand.component.html',
+  styleUrls: ['./add-brand.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class AddBrandComponent {
   users: any = [];
-  categoryList: any = [];
+  brandList: any = [];
   // users: any = []:
   public fullName: string = '';
   public role: string = '';
   public ModalTitle: string = '';
   ActivateAddCatComp: boolean = false;
   cat: any;
+  BrandName = '';
+  CategoryId = '';
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -76,7 +33,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllCategory();
+    this.getAllBrand();
 
     // observable so can subscribe
     this.userStore.getFullName().subscribe((value) => {
@@ -90,16 +47,16 @@ export class DashboardComponent implements OnInit {
     });
     // setTimeout(() => {
     //   this.ngOnInit();
-    // }, 1000 * 2);
+    // }, 1000 * 10);
   }
 
-  async getAllCategory() {
-    this.httpProvider.getAllCategory().subscribe({
+  async getAllBrand() {
+    this.httpProvider.getAllBrand().subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData) {
-            this.categoryList = resultData;
+            this.brandList = resultData;
           }
         }
       },
@@ -114,45 +71,47 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
+  addtheCategory() {
+    const cat = {
+      BrandName: this.BrandName,
+      CategoryId: this.CategoryId,
+    };
+
+    this.httpProvider.addBrand(cat).subscribe((res) => {
+      console.log(res);
+      alert(res.message);
+      window.location.reload();
+    });
+  }
 
   async addClick() {
-    // this.cat = {
-    //   CategoryName: '',
-    // };
-    // this.ModalTitle = 'Add Category';
-    // this.ActivateAddCatComp = true;
     console.log(await this.modalService.open(AddCategoryComponent));
   }
   closeClick() {
     this.ActivateAddCatComp = false;
   }
 
-  // deleteCategoryConfirmation(category: any) {
-  //   this.modalService
-  //     .open(MODALS['deleteModal'], {
-  //       ariaLabelledBy: 'modal-basic-title',
-  //     })
-  //     .result.then(
-  //       (result) => {
-  //         this.deleteCategory(category);
-  //       },
-  //       (reason) => {}
-  //     );
-  // }
-
-  deleteCategory(category: any) {
-    this.httpProvider.deleteCategoryById(category.id).subscribe(
-      (data: any) => {
+  deleteBrand(category: any) {
+    this.httpProvider.deleteBrandById(category.id).subscribe({
+      next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           if (resultData != null && resultData.isSuccess) {
             alert(resultData.message);
-            this.getAllCategory();
+            this.getAllBrand();
           }
         }
       },
-      (error: any) => {}
-    );
+      error: (error: any) => {
+        if (error) {
+          if (error.status == 404) {
+            if (error.error && error.error.message) {
+              this.users = [];
+            }
+          }
+        }
+      },
+    });
   }
 
   signout() {
