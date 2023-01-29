@@ -20,6 +20,7 @@ import { AddCategoryComponent } from './components/dashboard/add-category/add-ca
 import { ModalModule } from './modal/modal.module';
 import { AddBrandComponent } from './components/dashboard/add-brand/add-brand.component';
 import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
+import { AddSegmentComponent } from './components/dashboard/add-segment/add-segment.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AddProductComponent } from './components/dashboard/add-product/add-prod
     AddCategoryComponent,
     AddBrandComponent,
     AddProductComponent,
+    AddSegmentComponent,
   ],
   imports: [
     BrowserModule,
