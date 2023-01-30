@@ -12,7 +12,7 @@ import { AddCategoryComponent } from 'src/app/components/dashboard/add-category/
   templateUrl: './add-brand.component.html',
   styleUrls: ['./add-brand.component.scss'],
 })
-export class AddBrandComponent {
+export class AddBrandComponent implements OnInit {
   users: any = [];
   brandList: any = [];
   // users: any = []:
@@ -78,8 +78,8 @@ export class AddBrandComponent {
     };
 
     this.httpProvider.addBrand(cat).subscribe((res) => {
-      console.log(res);
-      alert(res.message);
+      console.log(res.body);
+      alert(res.body.brandName + ' is added!');
       window.location.reload();
     });
   }

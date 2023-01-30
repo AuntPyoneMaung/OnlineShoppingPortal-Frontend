@@ -21,6 +21,7 @@ import { ModalModule } from './modal/modal.module';
 import { AddBrandComponent } from './components/dashboard/add-brand/add-brand.component';
 import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
 import { AddSegmentComponent } from './components/dashboard/add-segment/add-segment.component';
+import { SideNavComponent } from './components/dashboard/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddSegmentComponent } from './components/dashboard/add-segment/add-segm
     AddBrandComponent,
     AddProductComponent,
     AddSegmentComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddCategoryComponent } from './components/dashboard/add-category/add-category/add-category.component';
 import { AddBrandComponent } from './components/dashboard/add-brand/add-brand.component';
 import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
+import { AddSegmentComponent } from './components/dashboard/add-segment/add-segment.component';
 import { SignupComponent } from './components/signup/signup.component';
 // import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-segment',
+    component: AddSegmentComponent,
     canActivate: [AuthGuard],
   },
   {

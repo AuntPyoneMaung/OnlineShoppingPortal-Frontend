@@ -13,12 +13,16 @@ var httpLink = {
   getAllCategory: apiUrl + '/api/categories/getAllCategory',
   deleteCategoryById: apiUrl + '/api/categories',
   deleteBrandById: apiUrl + '/api/brand',
+  deleteSegmentById: apiUrl + '/api/segment',
   saveEmployee: apiUrl + '/api/categories/saveEmployee',
   getAllProducts: apiUrl + '/api/products',
   getAllBrand: apiUrl + '/api/brand',
+  getAllSegments: apiUrl + '/api/segment',
   getUsers: apiUrl + '/api/User/getAllUsers',
   addCategory: apiUrl + '/api/categories',
   addBrand: apiUrl + '/api/brand',
+  addSegment: apiUrl + '/api/segment',
+  addProduct: apiUrl + '/api/products',
 };
 
 @Injectable({
@@ -35,12 +39,16 @@ export class HttpProviderService {
     return this.webApiService.get(httpLink.getAllBrand);
   }
 
-  public getUsers(): Observable<any> {
-    return this.webApiService.get(httpLink.getUsers);
-  }
-
   public getAllProducts(): Observable<any> {
     return this.webApiService.get(httpLink.getAllProducts);
+  }
+
+  public getAllSegments(): Observable<any> {
+    return this.webApiService.get(httpLink.getAllSegments);
+  }
+
+  public getUsers(): Observable<any> {
+    return this.webApiService.get(httpLink.getUsers);
   }
 
   public addCategory(cateogry: any): Observable<any> {
@@ -51,12 +59,24 @@ export class HttpProviderService {
     return this.webApiService.post(httpLink.addBrand, brand);
   }
 
+  public addProduct(prod: any): Observable<any> {
+    return this.webApiService.post(httpLink.addProduct, prod);
+  }
+
+  public addSegment(segment: any): Observable<any> {
+    return this.webApiService.post(httpLink.addSegment, segment);
+  }
+
   public deleteCategoryById(model: any): Observable<any> {
     return this.webApiService.post(httpLink.deleteCategoryById + model, '');
   }
 
   public deleteBrandById(model: any): Observable<any> {
     return this.webApiService.post(httpLink.deleteCategoryById + model, '');
+  }
+
+  public deleteSegmentById(model: any): Observable<any> {
+    return this.webApiService.post(httpLink.deleteSegmentById + model, '');
   }
 
   public saveEmployee(model: any): Observable<any> {
