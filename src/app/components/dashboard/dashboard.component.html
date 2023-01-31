@@ -30,7 +30,9 @@
                             <td>{{c.categoryId}}</td>
                             <td>{{c.segment.segmentName}}</td>
                             <td>{{c.segmentId}}</td>
-                            <td>{{c.brands}}</td>
+                            <ng-container *ngFor="let x of c.brands">
+                                <td>{{x.brandName}}</td>
+                            </ng-container>
                         </tr>
                     </tbody>
                 </table>

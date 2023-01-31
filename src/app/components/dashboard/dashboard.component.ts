@@ -66,6 +66,7 @@ export class DashboardComponent implements OnInit {
   public ModalTitle: string = '';
   ActivateAddCatComp: boolean = false;
   cat: any;
+  brands: any = [];
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -97,9 +98,20 @@ export class DashboardComponent implements OnInit {
     this.httpProvider.getAllCategory().subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
+          // this.brands = data.body;
+          // this.brands.forEach(category =>{
+          //   category.brands.forEach(brand =>{
+          //     this.
+          //   })
+          // })
           var resultData = data.body;
           if (resultData) {
             this.categoryList = resultData;
+            this.categoryList.forEach((category: { brands: any[] }) => {
+              category.brands.forEach((brand: { brandName: any }) => {
+                this.brands.push(brand);
+              });
+            });
           }
         }
       },
