@@ -1,0 +1,124 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"> Online <h5>Shopping Portal</h5></a>
+</header>
+<div class="account-content">
+    <div class="container">
+        <div class="account-wrapper">
+            <div class="panel border bg-white">
+                <div class="panel-heading">
+                    <h3 class="account-title">My Account</h3>
+                    <p class="account-subtitle">Update your particulars</p>
+                </div>
+
+                <form [formGroup]="signUpForm" (ngSubmit)="onSignupSubmit()">
+                    <div class="card-body auth-card">
+                        <div class="form-group pt-3">
+                            <div class="data-details">
+                                <span>First Name : </span>
+                                <h5 *ngFor="let c of userList">{{c.firstName}}</h5>
+                            </div>
+                            <div class="data-details">
+                                <span>Last Name : </span>
+                                <h5 *ngFor="let c of userList">{{c.lastName}}</h5>
+                            </div>
+                            <div>
+                                <span>Address 1 : </span>
+                                <h5 *ngFor="let c of userList">{{c.address1}}</h5>
+                            </div>
+                            <div>
+                                <span>Address 2 : </span>
+                                <h5 *ngFor="let c of userList">{{c.address2}}</h5>
+                            </div>
+                            <div>
+                                <span>City : </span>
+                                <h5 *ngFor="let c of userList">{{c.city}}</h5>
+                            </div>
+                            <div>
+                                <span>State : </span>
+                                <h5 *ngFor="let c of userList">{{c.state}}</h5>
+                            </div>
+                            <div>
+                                <span>ZIP : </span>
+                                <h5 *ngFor="let c of userList">{{c.zip}}</h5>
+                            </div>
+                            <div>
+                                <span>Mobile : </span>
+                                <h5 *ngFor="let c of userList">{{c.phone}}</h5>
+                            </div>
+
+                            <div class="input-field">
+                                <!-- <label for="user">Modify First Name :</label> -->
+                                <input formControlName="firstName" type="text" class="form-control"
+                                    placeholder="optional" autocomplete="disabled" hidden />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <!-- <div class="data-details">
+                                <span>Last Name : </span>
+                                <h5 *ngFor="let c of userList">{{c.lastName}}</h5>
+                            </div> -->
+                            <div class="input-field">
+                                <!-- <label for="user">Modify Last Name : </label> -->
+                                <input formControlName="lastName" type="text" class="form-control"
+                                    placeholder="optional" hidden />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">Address 1 : </label>
+                                <input formControlName="address1" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">Address 2 : </label>
+                                <input formControlName="address2" type="text" class="form-control"
+                                    autocomplete="disabled" />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">City : </label>
+                                <input formControlName="city" type="text" class="form-control"
+                                    autocomplete="disabled" />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">State : </label>
+                                <input formControlName="state" type="text" class="form-control"
+                                    autocomplete="disabled" />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">ZIP : </label>
+                                <input formControlName="zip" type="text" class="form-control" autocomplete="disabled" />
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <div class="input-field">
+                                <label for="user">Phone : </label>
+                                <input formControlName="phone" type="text" class="form-control"
+                                    autocomplete="disabled" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-6 col-12">
+                            <button type="submit" class="btn btn-primary account-btn">Save</button>
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                            <div class="text-center pt-4">
+                                Go back to home page,
+                                <a id="forget" routerLink="/products">here</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -45,25 +45,27 @@
 <app-header></app-header>
 <!-- <app-dashboard></app-dashboard> -->
 <div class="card-top container-fluid">
+    <h5>Browse by Brands</h5>
     <div class="container d-flex">
+
         <div class="item">
             <a (click)="filter('')">
                 <h6>All products</h6>
             </a>
         </div>
         <div class="item">
-            <a (click)="filter('Leek')">
-                <h6>Leek</h6>
+            <a (click)="filter('Pasar')">
+                <h6>Parsa</h6>
             </a>
         </div>
         <div class="item">
-            <a (click)="filter('Honey Dew')">
-                <h6>Honey Dew</h6>
+            <a (click)="filter('FairP')">
+                <h6>FairP</h6>
             </a>
         </div>
         <div class="item">
-            <a (click)="filter('Pepsi')">
-                <h6>Pepsi</h6>
+            <a (click)="filter('TasteMaxx')">
+                <h6>TasteMaxx</h6>
             </a>
         </div>
     </div>
@@ -74,7 +76,6 @@
 
         <ng-container *ngFor="let item of filterCategory| filter:searchKey:'title'">
             <div class="card col-md-3">
-                <!-- <img src="{{ item.image }}" alt="" /> -->
                 <h5 style="
             white-space: nowrap;
             overflow: hidden;
@@ -90,6 +91,14 @@
             max-width: 100ch;
           ">
                     {{ item.productDescription }}
+                </p>
+                <p style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "><strong>Brand:</strong>
+                    {{ item.brandProducts[0].brand.brandName }}
                 </p>
                 <p><strong>Price:</strong> $Rs. {{ item.productPrice }}</p>
                 <button class="btn btn-primary" (click)="addtocart(item)">

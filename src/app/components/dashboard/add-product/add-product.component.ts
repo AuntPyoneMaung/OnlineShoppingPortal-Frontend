@@ -23,6 +23,7 @@ export class AddProductComponent implements OnInit {
   ProductDescription = '';
   ProductModel = '';
   ProductPrice = '';
+  BrandId = '';
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -77,6 +78,7 @@ export class AddProductComponent implements OnInit {
       ProductDescription: this.ProductDescription,
       ProductModel: this.ProductModel,
       ProductPrice: this.ProductPrice,
+      BrandId: this.BrandId,
     };
 
     this.httpProvider.addProduct(prod).subscribe((res) => {

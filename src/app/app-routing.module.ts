@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
@@ -42,8 +43,13 @@ const routes: Routes = [
     component: AddProductComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'account',
+    component: UserDetailComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent },
 ];
 
 @NgModule({

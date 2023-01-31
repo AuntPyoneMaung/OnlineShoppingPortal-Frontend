@@ -23,6 +23,8 @@ export class AddBrandComponent implements OnInit {
   cat: any;
   BrandName = '';
   CategoryId = '';
+  productList: any = [];
+  brands: any = [];
 
   constructor(
     private httpProvider: HttpProviderService,
@@ -57,6 +59,14 @@ export class AddBrandComponent implements OnInit {
           var resultData = data.body;
           if (resultData) {
             this.brandList = resultData;
+            this.brandList.forEach((brand: { brandProducts: any[] }) => {
+              // console.log('brand', brand);
+              this.brands.push(brand);
+              brand.brandProducts.forEach((product: { product: any }) => {
+                // console.log('products', product);
+                this.productList.push(product);
+              });
+            });
           }
         }
       },

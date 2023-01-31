@@ -20,6 +20,7 @@
                             <th scope="col">Product Desc</th>
                             <th scope="col">Product Model</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Brand Name</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,7 @@
                             <td>{{c.productDescription}}</td>
                             <td>{{c.productModel}}</td>
                             <td>{{c.productPrice}}</td>
+                            <td>{{c.brandProducts[0].brand.brandName}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,6 +54,11 @@
                         <div class="input-group mb-12">
                             <span class="input-group-text">Product Price</span>
                             <input type="text" class="form-control" [(ngModel)]="ProductPrice">
+                        </div>
+                        <div class="input-group mb-12">
+                            <span class="input-group-text">Brand ID</span>
+                            <input placeholder="refer to 'Add Brand' page" type="text" class="form-control"
+                                [(ngModel)]="BrandId">
                         </div>
                     </div>
                 </div>

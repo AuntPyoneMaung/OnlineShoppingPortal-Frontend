@@ -31,7 +31,13 @@
                             <td colspan="4"></td>
                             <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
                             <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-                            <td><button class="btn btn-success">Checkout</button></td>
+                            <ng-container *ngIf="role === 'loggedIn'; else elseNot">
+                                <td><button (click)="alertWIP()" class="btn btn-success">Checkout</button></td>
+                            </ng-container>
+                            <ng-template #elseNot>
+                                <td><button (click)="alert()" class="btn btn-success">Checkout</button></td>
+                            </ng-template>
+
                             <td><strong>Grand Total : ${{grandTotal}}</strong></td>
                         </tr>
                     </tbody>

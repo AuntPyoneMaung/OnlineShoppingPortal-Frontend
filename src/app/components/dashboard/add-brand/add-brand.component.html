@@ -28,6 +28,8 @@
                             <td>{{c.brandName}}</td>
                             <td>{{c.brandId}}</td>
                             <td>{{c.categoryId}}</td>
+                            <td *ngFor="let x of c.productList">{{x.product.productName}}</td>
+                            <!-- unable to filter  -->
                             <td></td>
                         </tr>
                     </tbody>

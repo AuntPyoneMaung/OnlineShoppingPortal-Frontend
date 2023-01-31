@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit {
       next: (data) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
+          console.log(resultData);
           if (resultData) {
             this.productList = resultData;
             this.filterCategory = resultData;
@@ -62,8 +63,8 @@ export class ProductsComponent implements OnInit {
   // does not function properly as M-M model does not work due to circular reference
   // currently set to filter by exact name
   filter(brand: string) {
-    this.filterCategory = this.productList.filter((a: any) => {
-      if (a.productName == brand || brand == '') {
+    this.filterCategory = this.productList.map((a: any) => {
+      if (a.brandProducts[0].brand.brandName === brand || brand === '') {
         return a;
       }
     });

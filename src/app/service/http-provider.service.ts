@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,11 +15,11 @@ var httpLink = {
   deleteCategoryById: apiUrl + '/api/categories',
   deleteBrandById: apiUrl + '/api/brand',
   deleteSegmentById: apiUrl + '/api/segment',
-  saveEmployee: apiUrl + '/api/categories/saveEmployee',
+  updateUser: apiUrl + '/api/Customer',
   getAllProducts: apiUrl + '/api/products',
   getAllBrand: apiUrl + '/api/brand',
   getAllSegments: apiUrl + '/api/segment',
-  getUsers: apiUrl + '/api/User/getAllUsers',
+  getUsers: apiUrl + '/api/Customer/getAllUsers',
   addCategory: apiUrl + '/api/categories',
   addBrand: apiUrl + '/api/brand',
   addSegment: apiUrl + '/api/segment',
@@ -29,7 +30,7 @@ var httpLink = {
   providedIn: 'root',
 })
 export class HttpProviderService {
-  constructor(private webApiService: WebApiService) {}
+  constructor(private webApiService: WebApiService, private http: HttpClient) {}
 
   public getAllCategory(): Observable<any> {
     return this.webApiService.get(httpLink.getAllCategory);
@@ -79,7 +80,7 @@ export class HttpProviderService {
     return this.webApiService.post(httpLink.deleteSegmentById + model, '');
   }
 
-  public saveEmployee(model: any): Observable<any> {
-    return this.webApiService.post(httpLink.saveEmployee, model);
+  public updateUser(id: number, model: any): Observable<any> {
+    return this.http.put(`${httpLink.updateUser}/${id}`, model);
   }
 }
