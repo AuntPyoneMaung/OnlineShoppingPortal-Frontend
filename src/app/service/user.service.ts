@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
   private fullName$ = new BehaviorSubject<string>('');
   private role$ = new BehaviorSubject<string>('');
+  private id$ = new BehaviorSubject<number>(1);
 
   constructor() {}
 
@@ -25,5 +26,13 @@ export class UserService {
 
   public setFullName(fullname: string) {
     this.fullName$.next(fullname);
+  }
+
+  public getUserId() {
+    return this.id$.asObservable();
+  }
+
+  public setUserId(id: number) {
+    this.id$.next(id);
   }
 }

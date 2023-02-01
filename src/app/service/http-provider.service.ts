@@ -52,6 +52,10 @@ export class HttpProviderService {
     return this.webApiService.get(httpLink.getUsers);
   }
 
+  public getUserById(id: number): Observable<any> {
+    return this.webApiService.get(`${httpLink.updateUser}/${id}`);
+  }
+
   public addCategory(cateogry: any): Observable<any> {
     return this.webApiService.post(httpLink.addCategory, cateogry);
   }

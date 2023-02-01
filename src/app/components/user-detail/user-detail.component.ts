@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/service/auth.service';
 import { HttpProviderService } from 'src/app/service/http-provider.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -33,11 +34,19 @@ export class UserDetailComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private httpProvider: HttpProviderService
+    private httpProvider: HttpProviderService,
+    private userStore: UserService
   ) {}
 
   ngOnInit(): void {
     this.createFormGroup();
+
+    this.userStore.getUserId().subscribe((value) => {
+      let idFromToken = this.auth.getIdFromToken();
+      console.log(idFromToken);
+      this.id = idFromToken;
+    });
+
     this.getAllUser();
   }
 
@@ -49,7 +58,7 @@ export class UserDetailComponent implements OnInit {
     }
   }
   async getAllUser() {
-    this.httpProvider.getUsers().subscribe({
+    this.httpProvider.getUserById(this.id).subscribe({
       next: (data: any) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
