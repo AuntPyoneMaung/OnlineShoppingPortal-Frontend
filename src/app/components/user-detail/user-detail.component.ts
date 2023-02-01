@@ -43,7 +43,7 @@ export class UserDetailComponent implements OnInit {
 
     this.userStore.getUserId().subscribe((value) => {
       let idFromToken = this.auth.getIdFromToken();
-      console.log(idFromToken);
+      console.log('this is id: ', this.auth.getIdFromToken());
       this.id = idFromToken;
     });
 
@@ -95,40 +95,33 @@ export class UserDetailComponent implements OnInit {
 
   onSignupSubmit() {
     console.log(this.signUpForm.value);
-    this.httpProvider.getUsers().subscribe({
-      next: (data: any) => {
-        if (data != null && data.body != null) {
-          var resultData = data.body;
-
-          if (resultData) {
-            this.userList = resultData;
-            this.id = resultData.customerId;
-            this.isLoading = true;
-            this.httpProvider
-              .updateUser(this.signUpForm.value, this.id)
-              .subscribe({
-                next: (res) => {
-                  this.isLoading = false;
-                  alert(res.message);
-                  this.signUpForm.reset();
-                  window.location.reload();
-                },
-                error: (err) => {
-                  alert(err.error.message);
-                },
-              });
-          }
-        }
+    this.isLoading = true;
+    this.id = this.auth.getIdFromToken();
+    console.log(this.id);
+    this.httpProvider.updateUser(this.signUpForm.value, this.id).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        alert(res.message);
+        this.signUpForm.reset();
+        window.location.reload();
       },
-      error: (error: any) => {
-        if (error) {
-          if (error.status == 404) {
-            if (error.error && error.error.message) {
-              this.users = [];
-            }
-          }
-        }
+      error: (err) => {
+        alert('Unknown error occured'); // backend new{Message=""} unable to read with err.error.message
+        // window.location.reload();
       },
     });
   }
+
+  // addtheCategory() {
+  //   const cat = {
+  //     CategoryName: this.CategoryName,
+  //     SegmentId: this.SegmentId,
+  //   };
+
+  //   this.service.addCategory(cat).subscribe((res) => {
+  //     console.log(res);
+  //     alert(res.body.categoryName + ' is added!');
+  //     window.location.reload();
+  //   });
+  // }
 }
