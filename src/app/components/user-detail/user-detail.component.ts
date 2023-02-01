@@ -56,9 +56,6 @@ export class UserDetailComponent implements OnInit {
           console.log(resultData);
           if (resultData) {
             this.userList = resultData;
-            this.id = resultData.forEach(element => {
-              
-            });;
           }
         }
       },
