@@ -21,11 +21,15 @@
                             <th style="width: 25%;">{{item.productDescription}}</th>
                             <th style="width: 12%;">{{item.productPrice}}</th>
                             <td style="width: 12%;">{{item.quantity}}</td>
-                            <td style="width: 12%;">{{item.total}}</td>
+                            <td style="width: 12%;">{{item.productPrice}}</td>
                             <td>
                                 <button (click)="removeItem(item)" class="btn btn-danger"><i
                                         class="fas fa-trash-alt"></i></button>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"></td>
+                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
                         </tr>
                         <tr>
                             <td colspan="4"></td>
@@ -38,8 +42,9 @@
                                 <td><button (click)="alert()" class="btn btn-success">Checkout</button></td>
                             </ng-template>
 
-                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                            <!-- <td><strong>Grand Total : ${{grandTotal}}</strong></td> -->
                         </tr>
+
                     </tbody>
                 </table>
             </div>
