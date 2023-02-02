@@ -42,10 +42,12 @@ export class DashboardComponent implements OnInit {
     this.userStore.getRole().subscribe((value) => {
       let roleFromToken = this.auth.getRoleFromToken();
       this.role = value || roleFromToken;
+
       if (this.role === 'user') {
         this.router.navigate(['/products']);
       }
     });
+
     // setTimeout(() => {
     //   this.ngOnInit();
     // }, 1000 * 2);

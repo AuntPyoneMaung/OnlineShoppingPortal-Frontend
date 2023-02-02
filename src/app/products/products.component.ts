@@ -14,6 +14,8 @@ export class ProductsComponent implements OnInit {
   public filterCategory: any;
   public filterBrand: any;
   searchKey: string = '';
+  isLoading: boolean = false;
+
   constructor(
     private httpProvider: HttpProviderService,
     private cartService: CartService,
@@ -26,12 +28,14 @@ export class ProductsComponent implements OnInit {
   }
 
   async getAllProducts() {
+    this.isLoading = true;
     this.httpProvider.getAllProducts().subscribe({
       next: (data) => {
         if (data != null && data.body != null) {
           var resultData = data.body;
           console.log(resultData);
           if (resultData) {
+            this.isLoading = false;
             this.productList = resultData;
             this.filterCategory = resultData;
           }
